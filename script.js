@@ -53,7 +53,7 @@ chatForm.addEventListener('submit', async (e) => {
 
     try {
         // 3. Petición al backend
-        const response = await fetch('https://TU-NOMBRE-DE-PROYECTO.onrender.com/chat', {
+        const response = await fetch('https://buho-academico.onrender.com/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message: text }),
