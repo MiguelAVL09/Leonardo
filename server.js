@@ -11,7 +11,7 @@ app.use(cors());
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 // Usamos el modelo flash si quieres más velocidad, o pro para más razonamiento
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" }); 
+const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro" }); 
 
 const generationConfig = {
   temperature: 0.3, // Temperatura baja para ser más preciso y académico
