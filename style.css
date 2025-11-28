@@ -1,0 +1,237 @@
+:root {
+    --sepia-dark: #3e3b32;
+    --sepia-light: #f4ecd8; /* Color papel viejo */
+    --sepia-medium: #e0d6b9;
+    --green-history: #2c4c3b; /* Verde bandera oscuro */
+    --gold-accent: #c5a059;
+    --red-history: #8a2be2;
+    
+    --font-title: 'Cinzel', serif;
+    --font-body: 'Roboto Slab', serif;
+    --font-elegant: 'Playfair Display', serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--sepia-light);
+    color: var(--sepia-dark);
+    height: 100vh;
+    overflow: hidden; /* App style */
+}
+
+/* --- LOGIN SCREEN --- */
+#login-screen {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://www.transparenttextures.com/patterns/aged-paper.png'), linear-gradient(to bottom, #2c3e50, #2c4c3b);
+    background-blend-mode: overlay;
+    flex-direction: column;
+}
+
+.login-card {
+    background-color: var(--sepia-light);
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    text-align: center;
+    border: 4px double var(--gold-accent);
+    max-width: 400px;
+    width: 90%;
+}
+
+.header-icon { font-size: 4rem; margin-bottom: 1rem; }
+
+h1 {
+    font-family: var(--font-title);
+    color: var(--green-history);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-family: var(--font-elegant);
+    font-style: italic;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.btn-primary, .btn-secondary {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    font-family: var(--font-title);
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--green-history);
+    color: white;
+    border: none;
+}
+.btn-primary:hover { background-color: #1a3024; }
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--green-history);
+    color: var(--green-history);
+}
+.btn-secondary:hover { background-color: rgba(44, 76, 59, 0.1); }
+
+/* --- APP INTERFACE --- */
+.hidden { display: none !important; }
+
+#app-interface {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background-color: var(--green-history);
+    color: var(--sepia-light);
+    display: flex;
+    flex-direction: column;
+    border-right: 4px solid var(--gold-accent);
+}
+
+.logo-area {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.logo-area h2 { font-family: var(--font-title); color: var(--gold-accent); }
+
+.tools-nav {
+    flex: 1;
+    padding: 20px;
+}
+
+.nav-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.tools-nav button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: rgba(255,255,255,0.05);
+    border: none;
+    color: var(--sepia-light);
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    transition: 0.2s;
+}
+
+.tools-nav button:hover { background: var(--gold-accent); color: var(--green-history); }
+
+.user-profile {
+    padding: 20px;
+    background: rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logout-btn {
+    margin-left: auto;
+    background: none;
+    border: 1px solid #aaa;
+    color: #aaa;
+    padding: 2px 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+/* Chat Workspace */
+.chat-workspace {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+    background-color: var(--sepia-medium);
+}
+
+.chat-history {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.message {
+    max-width: 80%;
+    padding: 20px;
+    border-radius: 8px;
+    line-height: 1.6;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+}
+
+.bot-message {
+    align-self: flex-start;
+    background-color: var(--sepia-light);
+    border-left: 5px solid var(--green-history);
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: white;
+    border-right: 5px solid var(--gold-accent);
+}
+
+.msg-content h3 { font-family: var(--font-elegant); color: var(--green-history); margin-bottom: 10px; }
+.msg-content ul { margin-left: 20px; margin-top: 10px; }
+
+/* Input Area */
+.input-area {
+    padding: 20px 40px;
+    background-color: var(--sepia-light);
+    border-top: 1px solid #ccc;
+}
+
+#chat-form {
+    display: flex;
+    gap: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+}
+
+#chat-input {
+    flex: 1;
+    border: none;
+    resize: none;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    outline: none;
+}
+
+#send-btn {
+    background-color: var(--green-history);
+    color: var(--gold-accent);
+    border: none;
+    padding: 0 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: var(--font-title);
+    transition: 0.2s;
+}
+#send-btn:hover { background-color: #1a3024; }
