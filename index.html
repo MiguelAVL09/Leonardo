@@ -16,10 +16,20 @@
             <h1>Bitácora Histórica</h1>
             <p class="subtitle">Asistente de Redacción Académica</p>
             
-            <div class="login-options">
-                <button class="btn-primary" onclick="ingresar('alumno')">Iniciar Sesión</button>
-                <button class="btn-secondary" onclick="ingresar('invitado')">Entrar como Invitado</button>
-                <p class="register-link">¿No tienes cuenta? <a href="#">Crear una nueva</a></p>
+            <div id="auth-forms">
+                <input type="text" id="username-input" placeholder="Nombre de usuario" class="auth-input">
+                <input type="password" id="password-input" placeholder="Contraseña" class="auth-input">
+                
+                <p id="auth-error" style="color: #d9534f; font-size: 0.9rem; display: none;"></p>
+
+                <button class="btn-primary" id="login-btn">Iniciar Sesión</button>
+                <button class="btn-secondary" id="register-btn" style="display: none;">Registrarse</button>
+                
+                <button class="btn-guest" onclick="ingresar('invitado')">Entrar como Invitado</button>
+                
+                <p class="register-link" id="toggle-text">
+                    ¿No tienes cuenta? <a href="#" id="toggle-auth">Crear una nueva</a>
+                </p>
             </div>
         </div>
         <div class="decoration-bottom"></div>

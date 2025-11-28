@@ -332,3 +332,28 @@ h1 {
 #attach-btn:hover {
     color: var(--green-history);
 }
+
+/* styles.css */
+.auth-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    font-family: var(--font-body);
+}
+
+.btn-guest {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    background: none;
+    border: none;
+    color: #666;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+.btn-guest:hover { color: var(--green-history); }
