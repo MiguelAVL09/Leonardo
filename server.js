@@ -6,7 +6,7 @@ const cors = require('cors');
 
 const app = express();
 const port = process.env.PORT || 3000;
-app.use(express.json());
+app.use(express.json({limit: '50mb'}));
 app.use(cors());
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
@@ -40,8 +40,30 @@ REGLAS DE COMPORTAMIENTO:
 
 app.post('/chat', async (req, res) => {
   try {
-    const userInput = req.body.message?.trim();
-    if (!userInput) return res.status(400).json({ reply: "Ingresa un texto válido." });
+    const userInput = req.body.message;
+    const fileData = req.body.file; // Aquí recibiremos el PDF
+
+    if (!userInput && !fileData) {
+      return res.status(400).json({ reply: "Por favor, envía un texto o un archivo." });
+    }
+
+    // Preparamos el mensaje para Gemini (Texto + Archivo si existe)
+    const parts = [];
+
+    if (fileData) {
+      parts.push({
+        inlineData: {
+          data: fileData.data, // El código base64 del PDF
+          mimeType: fileData.mimeType
+        }
+      });
+      // Si sube un archivo pero no dice nada, agregamos una instrucción por defecto
+      if (!userInput) parts.push({ text: "Analiza este documento y genera un resumen." });
+    }
+
+    if (userInput) {
+      parts.push({ text: userInput });
+    }
 
     const chat = model.startChat({
       generationConfig,
@@ -52,18 +74,18 @@ app.post('/chat', async (req, res) => {
         },
         {
           role: "model",
-          parts: [{ text: "Entendido. Soy El Escriba, listo para asistir en redacción académica sobre Historia de México." }],
+          parts: [{ text: "Entendido. Soy El Escriba. Puedo leer tus PDFs si los adjuntas." }],
         },
       ],
     });
 
-    const result = await chat.sendMessage(userInput);
+    const result = await chat.sendMessage(parts);
     const response = await result.response;
     res.json({ reply: response.text() });
 
   } catch (error) {
     console.error("Error API:", error);
-    res.status(500).json({ reply: "Error de conexión con el servidor académico." });
+    res.status(500).json({ reply: "Hubo un error al procesar tu solicitud (quizás el archivo es muy pesado)." });
   }
 });
 

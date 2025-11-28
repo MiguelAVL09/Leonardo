@@ -319,3 +319,16 @@ h1 {
         font-size: 1.5rem;
     }
 }
+
+#attach-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #888;
+    padding: 0 10px;
+    transition: color 0.3s;
+}
+#attach-btn:hover {
+    color: var(--green-history);
+}

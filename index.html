@@ -63,11 +63,17 @@
 
             <div class="input-area">
                 <form id="chat-form">
+                    <input type="file" id="file-input" accept="application/pdf" style="display: none;">
+                    
+                    <button type="button" id="attach-btn" title="Adjuntar PDF">📎</button>
+                    
                     <textarea id="chat-input" placeholder="Escribe tu instrucción o pega tu ensayo aquí..." rows="2"></textarea>
+                    
                     <button type="submit" id="send-btn">
                         <span>Enviar</span> ➤
                     </button>
                 </form>
+                <div id="file-name-display" style="font-size: 0.8rem; color: #666; padding: 0 10px; margin-top: -10px; display: none;"></div>
             </div>
         </main>
     </section>
