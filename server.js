@@ -55,7 +55,7 @@ pool.connect((err, client, release) => {
 // 3. Configuración de Inteligencia Artificial (Google Gemini)
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 // Usamos 'flash' por ser rápido y eficiente para lecturas largas
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro" });
 
 const generationConfig = {
     temperature: 0.3, // Creatividad baja para ser más preciso académicamente
