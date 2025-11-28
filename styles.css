@@ -235,3 +235,87 @@ h1 {
     transition: 0.2s;
 }
 #send-btn:hover { background-color: #1a3024; }
+
+/* =========================================
+   DISEÑO RESPONSIVO (Para Celulares y Tablets)
+   ========================================= */
+
+@media (max-width: 768px) {
+    /* 1. Cambiar la estructura principal a vertical */
+    #app-interface {
+        flex-direction: column; /* Apila la barra sobre el chat */
+    }
+
+    /* 2. Ajustar la Barra Lateral (ahora será una barra superior) */
+    .sidebar {
+        width: 100%; /* Ocupa todo el ancho */
+        height: auto; /* Altura automática según contenido */
+        border-right: none;
+        border-bottom: 4px solid var(--gold-accent);
+        flex-shrink: 0; /* Evita que desaparezca */
+    }
+
+    /* Título más pequeño en celular */
+    .logo-area {
+        padding: 10px;
+        text-align: center;
+    }
+    .logo-area h2 {
+        font-size: 1.2rem;
+    }
+
+    /* 3. Convertir los botones en un menú horizontal deslizable */
+    .tools-nav {
+        display: flex; /* Poner botones en fila */
+        overflow-x: auto; /* Permitir deslizar con el dedo si no caben */
+        padding: 10px;
+        gap: 10px; /* Espacio entre botones */
+        white-space: nowrap; /* Que el texto no se rompa */
+    }
+
+    .nav-title {
+        display: none; /* Ocultar el título "HERRAMIENTAS" para ahorrar espacio */
+    }
+
+    .tools-nav button {
+        width: auto; /* Ancho automático */
+        margin-bottom: 0;
+        padding: 8px 15px;
+        font-size: 0.85rem;
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* 4. Ajustar el perfil de usuario */
+    .user-profile {
+        padding: 5px 15px;
+        font-size: 0.9rem;
+    }
+
+    /* 5. Área del Chat */
+    .chat-workspace {
+        height: 100%;
+        width: 100%;
+    }
+
+    .chat-history {
+        padding: 20px; /* Menos relleno para aprovechar espacio */
+    }
+
+    .message {
+        max-width: 95%; /* Mensajes usan casi todo el ancho */
+    }
+
+    /* 6. Pantalla de Login (Inicio) */
+    .login-card {
+        padding: 1.5rem; /* Menos relleno */
+        width: 90%; /* Más ancha en celular */
+    }
+
+    .header-icon {
+        font-size: 3rem; /* Icono más pequeño */
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
